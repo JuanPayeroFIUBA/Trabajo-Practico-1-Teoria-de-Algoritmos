@@ -1,10 +1,7 @@
 def encontrar_moneda_mas_liviana_dyc(monedas):
     cantidad = len(monedas)
-    if cantidad == 2:
-        if monedas[0] < monedas[1]:
-            return 0
-        else:
-            return 1
+    if cantidad == 1:
+        return 0
 
     mitad = cantidad // 2
     if cantidad % 2 != 0:
@@ -29,7 +26,7 @@ def pesar_grupos_de_monedas(grupo1, grupo2):
 def main():
     # en el enunciado no especifica que se conozcan los pesos de las monedas, por lo que se asume que se tiene una lista con los pesos de cada moneda de modo que todas tienen un peso estandar (1 en este caso) excepto una que es la que hay que buscar
     # si no fuera el caso, se implementaria un for que recorra todas las monedas y obtenga su peso  luego lo guarde en una lista para ejecutar la funcion que encuentre la moneda mas liviana, lo cual seria O(n) y no sumaria a la complejidad de la funcion porque esta ya es O(n)
-    monedas_pesos = [1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1]
+    monedas_pesos = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1]
 
     moneda_mas_liviana = encontrar_moneda_mas_liviana_dyc(monedas_pesos)
     print(
