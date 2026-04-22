@@ -35,27 +35,3 @@ def main():
 
 
 main()
-
-
-# pseudocodigo
-# funcion encontrar_moneda_mas_liviana_dyc(monedas):
-#    //caso base
-#    if la cantidad de monedas es 2
-#        si la moneda izquierda es mas liviana
-#            la moneda izquierda es la mas liviana
-#        sino
-#            la moneda derecha es la mas liviana
-#
-#    //caso recursivo
-#    calculamos el medio de la lista de monedas
-#    if la cantidad de monedas es impar
-#        separamos la lista en dos mitades, sin incluir el medio
-#        if las mitades pesan lo mismo
-#            el medio es la moneda liviana
-#    sino
-#        separamos las monedas en dos mitades iguales
-#
-#    if la mitad izquierda es mas liviana
-#        buscamos en la mitad izquierda la moneda mas liviana
-#    sino
-#        buscamos en la mitad derecha la moneda mas liviana
