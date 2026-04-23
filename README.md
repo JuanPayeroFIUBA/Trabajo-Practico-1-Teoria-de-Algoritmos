@@ -23,6 +23,9 @@ Los pesos de las monedas están definidos directamente en el código como una li
 python Problema_1/Ejercicio_N1_DyC.py
 ```
 
+Set de Datos Utilizado para Graficar:
+[200000000, 300000000, 400000000, 500000000, 700000000, 1000000000]
+
 ---
 
 ## Problema 2 — Greedy (Dijkstra)
