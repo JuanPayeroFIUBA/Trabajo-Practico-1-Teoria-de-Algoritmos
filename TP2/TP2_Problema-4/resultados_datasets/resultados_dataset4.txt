@@ -1,0 +1,3 @@
+Satisfaccion observada en una ejecucion 5266
+Promedio observado en 10000 iteraciones: 5322.4202
+Esperado teórico: 5322.0
