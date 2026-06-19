@@ -1,0 +1,10 @@
+Estado de la resolucion: Optimal
+Ingreso Optimo Total: USD 255000.0
+
+Plan de Concesiones Aprobado:
+- Cliente_A (Usa 30 paradas | Ingreso USD 50000)
+- Cliente_B_Op1 (Usa 80 paradas | Ingreso USD 100000)
+- Cliente_C (Usa 75 paradas | Ingreso USD 100000)
+- Cliente_E (Usa 2 paradas | Ingreso USD 5000)
+
+Uso de infraestructura: 187 de 200 paradas disponibles.
