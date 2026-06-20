@@ -27,42 +27,31 @@ class MaxFlow:
     def bfs(self, s, t):
         parent = [None] * self.n
         parent[s] = (s, None)
-
         q = deque([s])
-
         while q:
             u = q.popleft()
-
             for e in self.graph[u]:
                 residual = e.capacidad - e.flujo
-
                 if residual > 0 and parent[e.hacia] is None:
                     parent[e.hacia] = (u, e)
-
                     if e.hacia == t:
                         return parent
-
                     q.append(e.hacia)
 
         return None
 
     def edmonds_karp(self, s, t):
         max_flujo = 0
-
         while True:
             parent = self.bfs(s, t)
-
             if parent is None:
                 break
-
             bottleneck = float("inf")
             v = t
-
             while v != s:
                 u, e = parent[v]
                 bottleneck = min(bottleneck, e.capacidad - e.flujo)
                 v = u
-
             v = t
 
             while v != s:
