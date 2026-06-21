@@ -1,0 +1,46 @@
+Dataset: d1
+Parametros: n=20, D=8, k=5, b=6
+
+Backups encontrados:
+Antena 0: [2, 3, 4, 6, 17]
+Antena 1: [2, 3, 4, 5, 14]
+Antena 2: [1, 3, 5, 6, 15]
+Antena 3: [1, 2, 5, 6, 7]
+Antena 4: [0, 1, 2, 3, 5]
+Antena 5: [1, 2, 3, 4, 6]
+Antena 6: [0, 1, 2, 3, 4]
+Antena 7: [0, 4, 5, 6, 8]
+Antena 8: [0, 6, 7, 10, 13]
+Antena 9: [5, 7, 10, 11, 13]
+Antena 10: [7, 8, 9, 12, 13]
+Antena 11: [4, 7, 8, 9, 10]
+Antena 12: [7, 9, 11, 13, 14]
+Antena 13: [8, 9, 10, 11, 15]
+Antena 14: [8, 9, 10, 11, 12]
+Antena 15: [8, 11, 12, 18, 19]
+Antena 16: [9, 11, 12, 13, 14]
+Antena 17: [10, 12, 13, 14, 15]
+Antena 18: [0, 12, 16, 17, 19]
+Antena 19: [0, 1, 16, 17, 18]
+
+Cantidad de veces que cada antena aparece como backup:
+Antena 0: 6 veces
+Antena 1: 6 veces
+Antena 2: 6 veces
+Antena 3: 6 veces
+Antena 4: 6 veces
+Antena 5: 6 veces
+Antena 6: 6 veces
+Antena 7: 6 veces
+Antena 8: 6 veces
+Antena 9: 6 veces
+Antena 10: 6 veces
+Antena 11: 6 veces
+Antena 12: 6 veces
+Antena 13: 6 veces
+Antena 14: 4 veces
+Antena 15: 3 veces
+Antena 16: 2 veces
+Antena 17: 3 veces
+Antena 18: 2 veces
+Antena 19: 2 veces

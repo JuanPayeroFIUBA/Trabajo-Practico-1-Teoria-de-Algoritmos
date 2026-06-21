@@ -1,12 +1,22 @@
 import glob
+import os
 import time
 from matplotlib import pyplot as plt
 import clasesFlujo as aux
 import generadorDeDatasets as gen
 
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASETS_DIR = os.path.join(BASE_DIR, "datasets")
+RESULTADOS_DIR = os.path.join(BASE_DIR, "resultados")
+
+
 def medir_tiempos():
-    files = sorted(glob.glob("datasets/*.txt"))
+    files = sorted(glob.glob(os.path.join(DATASETS_DIR, "*.txt")))
+    if not files:
+        print("No se encontraron datasets en:", DATASETS_DIR)
+        return [], []
+
     tamanios = []
     tiempos = []
     for file in files:
@@ -28,6 +38,10 @@ def curva_teorica(n_values):
 
 def graficar():
     n_values, tiempos = medir_tiempos()
+    if not n_values:
+        print("No hay datos para graficar.")
+        return
+
     teorica = curva_teorica(n_values)
     escala = max(tiempos) / max(teorica)
     teorica = [t * escala for t in teorica]
@@ -38,7 +52,12 @@ def graficar():
     plt.ylabel("Tiempo (segundos)")
     plt.title("Comparación tiempo real vs complejidad teórica")
     plt.legend()
-    plt.show()
+
+    os.makedirs(RESULTADOS_DIR, exist_ok=True)
+    grafico_path = os.path.join(RESULTADOS_DIR, "tiempos_problema2.png")
+    plt.savefig(grafico_path)
+    print(f"Gráfico guardado en: {grafico_path}")
+    plt.close()
 
 
 def backups_por_flujo(d, D, b, k):
@@ -82,29 +101,45 @@ def backups_por_flujo(d, D, b, k):
 
 
 def main():
-    archivos = glob.glob("datasets/*.txt")
-    for archivo in archivos:
+    archivos = sorted(glob.glob(os.path.join(DATASETS_DIR, "*.txt")))
+    if not archivos:
+        print("No se encontraron datasets en:", DATASETS_DIR)
+        return
 
+    os.makedirs(RESULTADOS_DIR, exist_ok=True)
+
+    for archivo in archivos:
+        nombre = os.path.splitext(os.path.basename(archivo))[0]
         n, D, k, b, d = gen.leer_dataset(archivo)
         solucion = backups_por_flujo(d, D, b, k)
-        if solucion is None:
-            print("No existe solución")
-            continue
 
-        print("Backups encontrados:\n")
-        for i, backups in enumerate(solucion):
-            print(f"Antena {i}: {backups}")
+        resultado_path = os.path.join(RESULTADOS_DIR, f"resultado_{nombre}.txt")
+        with open(resultado_path, "w") as f:
+            if solucion is None:
+                mensaje = f"Dataset: {nombre}\nNo existe solución\n"
+                print(mensaje)
+                f.write(mensaje)
+                continue
 
-        print("\nCantidad de veces que cada antena aparece como backup:")
-        usos = [0] * n
-        for backups in solucion:
-            for a in backups:
-                usos[a] += 1
+            f.write(f"Dataset: {nombre}\n")
+            f.write(f"Parametros: n={n}, D={D}, k={k}, b={b}\n\n")
+            f.write("Backups encontrados:\n")
+            for i, backups in enumerate(solucion):
+                f.write(f"Antena {i}: {backups}\n")
 
-        for i, c in enumerate(usos):
-            print(f"Antena {i}: {c} veces")
+            f.write("\nCantidad de veces que cada antena aparece como backup:\n")
+            usos = [0] * n
+            for backups in solucion:
+                for a in backups:
+                    usos[a] += 1
+
+            for i, c in enumerate(usos):
+                f.write(f"Antena {i}: {c} veces\n")
+
+        print(f"Resultado guardado en: {resultado_path}")
 
     graficar()
 
 
-main()
+if __name__ == "__main__":
+    main()
